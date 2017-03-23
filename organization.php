@@ -13,6 +13,18 @@ class Organization extends Thing
 		$this->_set('contactPoint', $point);
 	}
 
+	final public function setEmployees(Person ...$employees)
+	{
+		foreach ($employees as $employee) {
+			$this->addEmployee($employee);
+		}
+	}
+
+	final public function addEmployee(Person $employee)
+	{
+		$this->_add('employees', $employee);
+	}
+
 	final public function setParentOrganization(Organization $org)
 	{
 		$this->_set('parentOrganization', $org);
