@@ -11,6 +11,26 @@ class CreativeWork extends Thing
 		$this->_set('about', $thing);
 	}
 
+	final public function setAccountablePerson(Person $person)
+	{
+		$this->_set('accountablePerson', $person);
+	}
+
+	final public function setAggregateRating(AggregateRating $rating)
+	{
+		$this->_set('aggregateRating', $rating);
+	}
+
+	final public function setAlternativeHeadline(String $alt_headline)
+	{
+		$this->_set('alternativeHeadline', $alt_headline);
+	}
+
+	final public function setAssociateMedia(MediaObject $media)
+	{
+		$this->_set('associatedMedia', $media);
+	}
+
 	final public function setAuthor(Thing $author)
 	{
 		if ($author instanceof Person or $author instanceof Organization) {
