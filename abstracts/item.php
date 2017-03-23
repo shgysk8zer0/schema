@@ -11,10 +11,7 @@ abstract class Item implements \JsonSerializable
 
 	final public function jsonSerialize()
 	{
-		return json_encode(array_merge([
-			'@context' => self::SCHEMA,
-			'@type'    => $this::ITEMTYPE,
-		], $this->_data));
+		return json_encode($this->getArrayCopy());
 	}
 
 	final protected function _set(String $prop, $value)
@@ -59,6 +56,30 @@ abstract class Item implements \JsonSerializable
 	final public function getSchemaURL(): String
 	{
 		return $this::SCHEMA . '/' . $this::ITEMTYPE;
+	}
+
+	final public function getArrayCopy()
+	{
+		$data = [
+			'@context' => $this::SCHEMA,
+			'@type'    => $this::ITEMTYPE
+		];
+
+		foreach ($this->_data as $prop => $value) {
+			if ($value instanceof self) {
+				$data[$prop] = $value->getArrayCopy();
+			} elseif(is_array($value)) {
+				$data[$prop] = [];
+				foreach ($value as $item) {
+					$data[$prop][] = $item instanceof self
+						? $item->getArrayCopy()
+						: $item;
+				}
+			} else {
+				$data[$prop] = $value;
+			}
+		}
+		return $data;
 	}
 
 }
