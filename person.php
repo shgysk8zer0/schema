@@ -35,6 +35,11 @@ class Person extends Thing
 		$this->_set('affiliation', $org);
 	}
 
+	final public function setWorksFor(Organization $org)
+	{
+		$this->_set('worksFor', $org);
+	}
+
 	final public function setBirthDate(\DateTime $date)
 	{
 		$this->_set('birthDate', $date->format('Y-m-d'));
