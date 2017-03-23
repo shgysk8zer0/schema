@@ -40,6 +40,11 @@ class Person extends Thing
 		$this->_set('worksFor', $org);
 	}
 
+	final public function setJobTitle(String $title)
+	{
+		$this->_set('jobTitle', $title);
+	}
+
 	final public function setBirthDate(\DateTime $date)
 	{
 		$this->_set('birthDate', $date->format('Y-m-d'));
