@@ -6,7 +6,7 @@ class Offer extends Thing
 {
 	const ITEMTYPE = 'Offer';
 
-	final public function setPrice(float $price)
+	final public function setPrice(Float $price)
 	{
 		$this->_set('price', round($price, 2));
 	}

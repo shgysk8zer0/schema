@@ -23,7 +23,7 @@ class Rating extends Thing
 		$this->_set('bestRating', $rating);
 	}
 
-	final public function setRating(Int $rating)
+	final public function setRating(Float $rating)
 	{
 		$this->_set('ratingValue', $rating);
 	}
