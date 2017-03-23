@@ -21,6 +21,16 @@ class MediaObject extends CreativeWork
 		$this->_set('height', $height);
 	}
 
+	final public function setEncodingFormat(String $format)
+	{
+		$this->_set('encodingFormat', $format);
+	}
+
+	final public function setContentSize(Int $size)
+	{
+		$this->_set('contentSize', $size);
+	}
+
 	final public function setContentURL(String $url)
 	{
 		if (static::isURL($url)) {
