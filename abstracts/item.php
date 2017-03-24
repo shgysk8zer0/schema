@@ -14,6 +14,62 @@ abstract class Item implements \JsonSerializable
 		return json_encode($this->getArrayCopy());
 	}
 
+	final public function __debugInfo(): Array
+	{
+		return $this->_data;
+	}
+
+	final public function setDOMData(\DOMElement $el, $item = 0, $xpath = null): \DOMElement
+	{
+		$dom = $el->ownerDocument;
+		$xpath = $xpath ?? new \DOMXPath($dom);
+		if ($container = $this->_getItemContainer($xpath, $el, $this::SCHEMA . '/' . $this::ITEMTYPE, $item)) {
+			foreach ($this->_data as $prop => $value) {
+				if ($nodes = $xpath->query(".//*[@itemprop=\"{$prop}\"]", $container)) {
+					if ($nodes instanceof \DOMNodeList and $node = $nodes->item(0)) {
+						if ($value instanceof self and $node->hasAttribute('itemtype')) {
+							$value->setDOMData($node, 0, $xpath);
+						} elseif ($prop === 'url' and $node->hasAttribute('src')) {
+							$node->setAttribute('src', $value);
+						} elseif ($prop === 'url' and $node->hasAttribute('href')) {
+							$node->setAttribute('href', $value);
+						} elseif ($node->hasAttribute('content')) {
+							$node->setAttribute('content', $value);
+						} else {
+							$this->_insertHTML($node, $value);
+						}
+					}
+				}
+			}
+		}
+
+		return $el;
+	}
+
+	final private function _getItemContainer(\DOMXpath $xpath, \DOMElement $node, String $itemtype, Int $item = 0)
+	{
+		if ($node->hasAttribute('itemtype') and $node->getAttribute('itemtype') === $itemtype) {
+			return $node;
+		} elseif ($nodes = $xpath->query(".//*[@itemtype=\"{$itemtype}\"]", $node)) {
+			if ($nodes instanceof \DOMNodeList and $nodes->length > $item) {
+				return $nodes->item($item);
+			}
+		}
+	}
+
+	final private function _insertHTML(\DOMElement $el, String $content): \DOMElement
+	{
+		$tmp = new \DOMDocument();
+		$dom = $el->ownerDocument;
+		$hash = sha1($content);
+		$tmp->loadHTML("<div id=\"{$hash}\">$content</div>");
+		$container = $tmp->getElementById($hash);
+		foreach ($container->childNodes as $node) {
+			$el->appendChild($dom->importNode($node, true));
+		}
+		return $el;
+	}
+
 	final protected function _set(String $prop, $value)
 	{
 		$this->_data[$prop] = $value;
