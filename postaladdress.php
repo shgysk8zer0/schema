@@ -5,9 +5,15 @@ namespace shgysk8zer0\Schema;
 class PostalAddress extends ContactPoint
 {
 	const ITEMTYPE = 'PostalAddress';
+
 	final public function setStreetAddress(String $addr)
 	{
 		$this->_set('streetAddress', $addr);
+	}
+
+	final public function setPostOfficeBoxNumber(String $po_box)
+	{
+		$this->_set('postOfficeBoxNumber', $po_box);
 	}
 
 	final public function setLocality(String $locality)
