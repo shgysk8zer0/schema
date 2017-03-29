@@ -9,9 +9,9 @@ abstract class Item implements \JsonSerializable
 
 	private $_data = [];
 
-	final public function jsonSerialize()
+	final public function jsonSerialize(): Array
 	{
-		return json_encode($this->getArrayCopy());
+		return $this->getArrayCopy();
 	}
 
 	final public function __debugInfo(): Array
