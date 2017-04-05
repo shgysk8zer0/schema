@@ -32,7 +32,7 @@ class Action extends Thing
 
 	final public function setEndTime(\DateTime $end): self
 	{
-		return $this->_set('endTime', $end);
+		return $this->_set('endTime', $end->format(\DateTime::ISO8601));
 	}
 
 	final public function setError(Thing $error): self
@@ -90,7 +90,7 @@ class Action extends Thing
 
 	final public function setStartTime(\DateTime $start): self
 	{
-		return $this->_set('startTime', $start);
+		return $this->_set('startTime', $start->format(\DateTime::ISO8601));
 	}
 
 	final public function setTarget(EntryPoint $target): self
