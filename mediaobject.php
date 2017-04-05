@@ -6,52 +6,52 @@ class MediaObject extends CreativeWork
 {
 	const ITEMTYPE = 'MediaObject';
 
-	final public function setAssociatedArticle(NewsArticle $article)
+	final public function setAssociatedArticle(NewsArticle $article): self
 	{
-		$this->_set('associatedArticle', $article);
+		return $this->_set('associatedArticle', $article);
 	}
 
-	final public function setWidth(Int $width)
+	final public function setWidth(Int $width): self
 	{
-		$this->_set('width', $width);
+		return $this->_set('width', $width);
 	}
 
-	final public function setHeight(Int $height)
+	final public function setHeight(Int $height): self
 	{
-		$this->_set('height', $height);
+		return $this->_set('height', $height);
 	}
 
-	final public function setEncodingFormat(String $format)
+	final public function setEncodingFormat(String $format): self
 	{
-		$this->_set('encodingFormat', $format);
+		return $this->_set('encodingFormat', $format);
 	}
 
-	final public function setContentSize(Int $size)
+	final public function setContentSize(Int $size): self
 	{
-		$this->_set('contentSize', $size);
+		return $this->_set('contentSize', $size);
 	}
 
-	final public function setContentURL(String $url)
+	final public function setContentURL(String $url): self
 	{
 		if (static::isURL($url)) {
-			$this->_set('contentUrl', $url);
+			return $this->_set('contentUrl', $url);
 		} else {
 			throw new \InvalidArgumentException("$url is not a valid content URL");
 		}
 	}
 
-	final public function setRequiresSubscription(Bool $requires_subscription)
+	final public function setRequiresSubscription(Bool $requires_subscription): self
 	{
-		$this->_set('requiresSubscription', $requires_subscription ? 'true' : 'false');
+		return $this->_set('requiresSubscription', $requires_subscription ? 'true' : 'false');
 	}
 
-	final public function setUploadDate(\DateTime $date)
+	final public function setUploadDate(\DateTime $date): self
 	{
-		$this->_set('uploadDate', $date->format(\DateTime::ISO8601));
+		return $this->_set('uploadDate', $date->format(\DateTime::ISO8601));
 	}
 
-	final public function setExpires(\DateTime $date)
+	final public function setExpires(\DateTime $date): self
 	{
-		$this->_set('expires', $date->format(\DateTime::ISO8601));
+		return $this->_set('expires', $date->format(\DateTime::ISO8601));
 	}
 }

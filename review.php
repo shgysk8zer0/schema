@@ -6,18 +6,18 @@ class Review extends CreativeWork
 {
 	const ITEMTYPE = 'Review';
 
-	final public function setItemReviewed(Thing $item)
+	final public function setItemReviewed(Thing $item): self
 	{
-		$this->_set('itemReviewed', $item);
+		return $this->_set('itemReviewed', $item);
 	}
 
-	final public function setReviewBody(String $review)
+	final public function setReviewBody(String $review): self
 	{
-		$this->_set('reviewBody', $review);
+		return $this->_set('reviewBody', $review);
 	}
 
-	final public function setReviewRating(Rating $rating)
+	final public function setReviewRating(Rating $rating): self
 	{
-		$this->_set('reviewRating', $rating);
+		return $this->_set('reviewRating', $rating);
 	}
 }

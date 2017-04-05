@@ -6,29 +6,29 @@ class GeoCoordinates extends Thing
 {
 	const ITEMTYPE = 'GeoCoordinates';
 
-	final public function setAddress(PostalAddress $address)
+	final public function setAddress(PostalAddress $address): self
 	{
-		$this->_set('address', $address);
+		return $this->_set('address', $address);
 	}
 
-	final public function setElevation(Int $elevation)
+	final public function setElevation(Int $elevation): self
 	{
-		$this->_set('elevation', $elevation);
+		return $this->_set('elevation', $elevation);
 	}
 
-	final public function setLatitude(Float $latitude)
+	final public function setLatitude(Float $latitude): self
 	{
-		$this->_set('latitude' , $latitude);
+		return $this->_set('latitude' , $latitude);
 	}
 
-	final public function setLongitude(Float $longitude)
+	final public function setLongitude(Float $longitude): self
 	{
-		$this->_set('longitude', $longitude);
+		return $this->_set('longitude', $longitude);
 	}
 
-	final public function setPostalCode(Int $code)
+	final public function setPostalCode(Int $code): self
 	{
-		$this->_set('postalCode', $code);
+		return $this->_set('postalCode', $code);
 	}
 
 	final public function getGeoURI(): String

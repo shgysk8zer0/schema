@@ -8,55 +8,56 @@ class Person extends Thing
 
 	const ITEMTYPE = 'Person';
 
-	final public function setFullName(String $first, String $middle, String $last)
+	final public function setFullName(String $first, String $middle, String $last): self
 	{
 		$this->setGivenName($first);
 		$this->setAdditionalName($middle);
 		$this->setFamilyName($last);
+		return $this;
 	}
 
-	final public function setGivenName(String $name)
+	final public function setGivenName(String $name): self
 	{
-		$this->_set('givenName', $name);
+		return $this->_set('givenName', $name);
 	}
 
-	final public function setAdditionalName(String $name)
+	final public function setAdditionalName(String $name): self
 	{
-		$this->_set('additionalName', $name);
+		return $this->_set('additionalName', $name);
 	}
 
-	final public function setFamilyName(String $name)
+	final public function setFamilyName(String $name): self
 	{
-		$this->_set('familyName', $name);
+		return $this->_set('familyName', $name);
 	}
 
-	final public function setAffiliation(Organization $org)
+	final public function setAffiliation(Organization $org): self
 	{
-		$this->_set('affiliation', $org);
+		return $this->_set('affiliation', $org);
 	}
 
-	final public function setWorksFor(Organization $org)
+	final public function setWorksFor(Organization $org): self
 	{
-		$this->_set('worksFor', $org);
+		return $this->_set('worksFor', $org);
 	}
 
-	final public function setJobTitle(String $title)
+	final public function setJobTitle(String $title): self
 	{
-		$this->_set('jobTitle', $title);
+		return $this->_set('jobTitle', $title);
 	}
 
-	final public function setBirthDate(\DateTime $date)
+	final public function setBirthDate(\DateTime $date): self
 	{
-		$this->_set('birthDate', $date->format('Y-m-d'));
+		return $this->_set('birthDate', $date->format('Y-m-d'));
 	}
 
-	final public function setChildren(Person ...$children)
+	final public function setChildren(Person ...$children): self
 	{
-		$this->_set('children', $children);
+		return $this->_set('children', $children);
 	}
 
-	final public function setParent(Person $parent)
+	final public function setParent(Person $parent): self
 	{
-		$this->_set('parent', $parent);
+		return $this->_set('parent', $parent);
 	}
 }

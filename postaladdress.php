@@ -6,33 +6,33 @@ class PostalAddress extends ContactPoint
 {
 	const ITEMTYPE = 'PostalAddress';
 
-	final public function setStreetAddress(String $addr)
+	final public function setStreetAddress(String $addr): self
 	{
-		$this->_set('streetAddress', $addr);
+		return $this->_set('streetAddress', $addr);
 	}
 
-	final public function setPostOfficeBoxNumber(String $po_box)
+	final public function setPostOfficeBoxNumber(String $po_box): self
 	{
-		$this->_set('postOfficeBoxNumber', $po_box);
+		return $this->_set('postOfficeBoxNumber', $po_box);
 	}
 
-	final public function setLocality(String $locality)
+	final public function setLocality(String $locality): self
 	{
-		$this->_set('addressLocality', $locality);
+		return $this->_set('addressLocality', $locality);
 	}
 
-	final public function setCountry(String $country)
+	final public function setCountry(String $country): self
 	{
-		$this->_set('addressCountry', $country);
+		return $this->_set('addressCountry', $country);
 	}
 
-	final public function setRegion(String $region)
+	final public function setRegion(String $region): self
 	{
-		$this->_set('addressRegion', $region);
+		return $this->_set('addressRegion', $region);
 	}
 
-	final public function setPostalCode(Int $code)
+	final public function setPostalCode(Int $code): self
 	{
-		$this->_set('postalCode', $code);
+		return $this->_set('postalCode', $code);
 	}
 }

@@ -6,13 +6,13 @@ class Offer extends Thing
 {
 	const ITEMTYPE = 'Offer';
 
-	final public function setPrice(Float $price)
+	final public function setPrice(Float $price): self
 	{
-		$this->_set('price', round($price, 2));
+		return $this->_set('price', round($price, 2));
 	}
 
-	final public function setPriceCurrency(String $currency)
+	final public function setPriceCurrency(String $currency): self
 	{
-		$this->_set('priceCurrency', $currency);
+		return $this->_set('priceCurrency', $currency);
 	}
 }

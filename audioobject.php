@@ -5,8 +5,9 @@ namespace shgysk8zer0\Schema;
 class AudioObject extends MediaObject
 {
 	const ITEMTYPE = 'AudioObject';
-	final public function setTranscript(String $text)
+
+	final public function setTranscript(String $text): self
 	{
-		$this->_set('transcript', $text);
+		return $this->_set('transcript', $text);
 	}
 }

@@ -8,35 +8,44 @@ class Organization extends Thing
 
 	const ITEMTYPE = 'Organization';
 
-	final public function setContactPoint(ContactPoint $point)
+	final public function setContactPoints(ContactPoint ...$points): self
 	{
-		$this->_set('contactPoint', $point);
+		foreach ($points as $point) {
+			$this->addContactPoint($point);
+		}
+		return $this;
 	}
 
-	final public function setEmployees(Person ...$employees)
+	final public function addContactPoint(ContactPoint $point): self
+	{
+		return $this->_add('contactPoint', $point);
+	}
+
+	final public function setEmployees(Person ...$employees): self
 	{
 		foreach ($employees as $employee) {
 			$this->addEmployee($employee);
 		}
+		return $this;
 	}
 
-	final public function addEmployee(Person $employee)
+	final public function addEmployee(Person $employee): self
 	{
-		$this->_add('employees', $employee);
+		return $this->_add('employees', $employee);
 	}
 
-	final public function setParentOrganization(Organization $org)
+	final public function setParentOrganization(Organization $org): self
 	{
-		$this->_set('parentOrganization', $org);
+		return $this->_set('parentOrganization', $org);
 	}
 
-	final public function setLegalName(String $name)
+	final public function setLegalName(String $name): self
 	{
-		$this->_set('legalName', $name);
+		return $this->_set('legalName', $name);
 	}
 
-	final public function setLogo(ImageObject $logo)
+	final public function setLogo(ImageObject $logo): self
 	{
-		$this->_set('logo', $logo);
+		return $this->_set('logo', $logo);
 	}
 }

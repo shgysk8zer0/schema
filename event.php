@@ -5,32 +5,33 @@ class Event extends Thing
 {
 	const ITEMTYPE = 'Event';
 
-	final public function setAbout(Thing $about)
+	final public function setAbout(Thing $about):self
 	{
-		$this->_set('about', $about);
+		return $this->_set('about', $about);
 	}
 
-	final public function addActors(Person ...$actors)
+	final public function addActors(Person ...$actors): self
 	{
 		foreach ($actors as $actor) {
 			$this->addActor($actor);
 		}
+		return $this;
 	}
 
-	final public function addActor(Person $actor)
+	final public function addActor(Person $actor): self
 	{
-		$this->_add('actors', $actor);
+		return $this->_add('actors', $actor);
 	}
 
-	final public function setAggregateRating(AggregateRating $rating)
+	final public function setAggregateRating(AggregateRating $rating): self
 	{
-		$this->_set('aggregateRating', $rating);
+		return $this->_set('aggregateRating', $rating);
 	}
 
-	final public function setComposer(Thing $composer)
+	final public function setComposer(Thing $composer): self
 	{
 		if ($composer instanceof Person or $composer instanceof Organization) {
-			$this->_set('composer', $composer);
+			return $this->_set('composer', $composer);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Composer must be an instance of Person or Organization. Instance of %s given',
@@ -39,10 +40,10 @@ class Event extends Thing
 		}
 	}
 
-	final public function setContributor(Thing $contributor)
+	final public function setContributor(Thing $contributor): self
 	{
 		if ($contributor instanceof Person or $contributor instanceof Organization) {
-			$this->_set('contributor', $contributor);
+			return $this->_set('contributor', $contributor);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Contributor must be an instance of Person or Organization. Instance of %s given',
@@ -51,25 +52,25 @@ class Event extends Thing
 		}
 	}
 
-	final public function setDoorTime(\DateTime $time)
+	final public function setDoorTime(\DateTime $time): self
 	{
-		$this->_set('doorTime', $time->format(\DateTime::ISO8601));
+		return $this->_set('doorTime', $time->format(\DateTime::ISO8601));
 	}
 
-	final public function setEndDate(\DateTime $date, Bool $has_time = true)
+	final public function setEndDate(\DateTime $date, Bool $has_time = true): self
 	{
-		$this->_set('endDate', $date->format($has_time ? \DateTime::ISO8601 : 'Y-m-d'));
+		return $this->_set('endDate', $date->format($has_time ? \DateTime::ISO8601 : 'Y-m-d'));
 	}
 
-	final public function setIsAccessibleForFree(Bool $is_free)
+	final public function setIsAccessibleForFree(Bool $is_free): self
 	{
-		$this->_set('isAccessibleForFree', $is_free ? 'true' : 'false');
+		return $this->_set('isAccessibleForFree', $is_free ? 'true' : 'false');
 	}
 
-	final public function setLocation(Thing $location)
+	final public function setLocation(Thing $location): self
 	{
 		if ($location instanceof Place or $location instanceof PostalAddress) {
-			$this->_set('location', $location);
+			return $this->_set('location', $location);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Location must be an instanceof Place or PostalAddress. Instance of %s given',
@@ -78,27 +79,28 @@ class Event extends Thing
 		}
 	}
 
-	final public function setMaximumAttendeeCapacity(Int $max)
+	final public function setMaximumAttendeeCapacity(Int $max): self
 	{
-		$this->_set('maximumAttendeeCapacity', $max);
+		return $this->_set('maximumAttendeeCapacity', $max);
 	}
 
-	final public function addOffers(Offer ...$offers)
+	final public function addOffers(Offer ...$offers): self
 	{
 		foreach ($offers as $offer) {
 			$this->addOffer($offer);
 		}
+		return $this;
 	}
 
-	final public function addOffer(Offer $offer)
+	final public function addOffer(Offer $offer): self
 	{
-		$this->_add('offers', $offer);
+		return $this->_add('offers', $offer);
 	}
 
-	final public function setOrganizer(Thing $organizer)
+	final public function setOrganizer(Thing $organizer): self
 	{
 		if ($organizer instanceof Person or $organizer instanceof Organization) {
-			$this->_set('organizer', $organizer);
+			return $this->_set('organizer', $organizer);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Organizer must be an instance of Person or Organization. Instance of %s given',
@@ -114,10 +116,10 @@ class Event extends Thing
 		}
 	}
 
-	final public function addPerformer(Thing $performer)
+	final public function addPerformer(Thing $performer): self
 	{
 		if ($performer instanceof Person or $performer instanceof Organization) {
-			$this->_add('performers', $performer);
+			return $this->_add('performers', $performer);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Performer must be an instance of Person or Organization. Instance of %s given',
@@ -126,22 +128,23 @@ class Event extends Thing
 		}
 	}
 
-	final public function addReviews(Review ...$reviews)
+	final public function addReviews(Review ...$reviews): self
 	{
 		foreach ($reviews as $review) {
 			$this->addReview($review);
 		}
+		return $this;
 	}
 
-	final public function addReview(Review $review)
+	final public function addReview(Review $review): self
 	{
-		$this->_add('reviews', $review);
+		return $this->_add('reviews', $review);
 	}
 
-	final public function setSponsor(Thing $sponsor)
+	final public function setSponsor(Thing $sponsor): self
 	{
 		if ($sponsor instanceof Person or $sponsor instanceof Organization) {
-			$this->_set('sponsor', $sponsor);
+			return $this->_set('sponsor', $sponsor);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Sponsor must be an instance of Person or Organization. Instance of %s given',
@@ -150,40 +153,41 @@ class Event extends Thing
 		}
 	}
 
-	final public function setStartDate(\DateTime $date, Bool $has_time = true)
+	final public function setStartDate(\DateTime $date, Bool $has_time = true): self
 	{
-		$this->_set('startDate', $date->format($has_time ? \DateTime::ISO8601 : 'Y-m-d'));
+		return $this->_set('startDate', $date->format($has_time ? \DateTime::ISO8601 : 'Y-m-d'));
 	}
 
-	final public function setSuperEvent(Event $event)
+	final public function setSuperEvent(Event $event): self
 	{
-		$this->_set('setSuperEvent', $event);
+		return $this->_set('setSuperEvent', $event);
 	}
 
-	final public function addSubEvents(Event ...$events)
+	final public function addSubEvents(Event ...$events): self
 	{
 		foreach ($events as $event) {
 			$this->addSubEvent($event);
 		}
+		return $this;
 	}
 
-	final public function addSubEvent(Event $event)
+	final public function addSubEvent(Event $event): self
 	{
-		$this->_add('subEvent', $event);
+		return $this->_add('subEvent', $event);
 	}
 
-	final public function setTypicalAgeRange(Int $min, Int $max)
+	final public function setTypicalAgeRange(Int $min, Int $max): self
 	{
-		$this->_set('typicalAgeRange', "{$min}-{$max}");
+		return $this->_set('typicalAgeRange', "{$min}-{$max}");
 	}
 
-	final public function setWorkFeatured(CreativeWork $work)
+	final public function setWorkFeatured(CreativeWork $work): self
 	{
-		$this->_set('workFeatured', $work);
+		return $this->_set('workFeatured', $work);
 	}
 
-	final public function setWorkPerformed(CreativeWork $work)
+	final public function setWorkPerformed(CreativeWork $work): self
 	{
-		$this->_set('workPerformed', $work);
+		return $this->_set('workPerformed', $work);
 	}
 }

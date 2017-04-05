@@ -8,25 +8,25 @@ class Place extends Thing
 
 	const ITEMTYPE = 'Place';
 
-	final public function setAggregateRating(AggregateRating $rating)
+	final public function setAggregateRating(AggregateRating $rating): self
 	{
-		$this->_set('aggregateRating', $rating);
+		return $this->_set('aggregateRating', $rating);
 	}
 
-	final public function setContainedInPlace(Place $place)
+	final public function setContainedInPlace(Place $place): self
 	{
-		$this->_set('containedInPlace', $place);
+		return $this->_set('containedInPlace', $place);
 	}
 
-	final public function setContainsPlace(Place $place)
+	final public function setContainsPlace(Place $place): self
 	{
-		$this->_set('containsPlace', $place);
+		return $this->_set('containsPlace', $place);
 	}
 
-	final public function setGeo(Thing $geo)
+	final public function setGeo(Thing $geo): self
 	{
 		if ($geo instanceof GeoCoordinates or $geo instanceof GeoShape) {
-			$this->_set('geo', $geo);
+			return $this->_set('geo', $geo);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Geo must be an instance of GeoCoordinates or GeoShape. Instance of %s give',
@@ -35,17 +35,18 @@ class Place extends Thing
 		}
 	}
 
-	final public function addPhotos(CreativeWork ...$photos)
+	final public function addPhotos(CreativeWork ...$photos): self
 	{
 		foreach ($photos as $photo) {
 			$this->addPhoto($photo);
 		}
+		return $this;
 	}
 
-	final public function addPhoto(CreativeWork $photo)
+	final public function addPhoto(CreativeWork $photo): self
 	{
 		if ($photo instanceof ImageObject or $photo instanceof Photograph) {
-			$this->_add('photo', $photo);
+			return $this->_add('photo', $photo);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Photo must be an instance of ImageObject or Photograph. Instance of %s given',

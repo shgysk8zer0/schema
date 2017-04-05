@@ -6,28 +6,28 @@ class OpeningHoursSpecification extends Thing
 {
 	const ITEMTYPE = 'OpeningHoursSpecification';
 
-	public function setCloses(String $time)
+	public function setCloses(String $time): self
 	{
-		$this->_set('closes', $time);
+		return $this->_set('closes', $time);
 	}
 
-	public function setOpens(String $time)
+	public function setOpens(String $time): self
 	{
-		$this->_set('opens', $time);
+		return $this->_set('opens', $time);
 	}
 
-	public function setDayOfWeek(String $day)
+	public function setDayOfWeek(String $day): self
 	{
-		$this->_set('dayOfWeek', $day);
+		return $this->_set('dayOfWeek', $day);
 	}
 
-	public function setValidFrom(\DateTime $from)
+	public function setValidFrom(\DateTime $from): self
 	{
-		$this->_set('validFrom', $from->format(\DateTime::ISO8601));
+		return $this->_set('validFrom', $from->format(\DateTime::ISO8601));
 	}
 
-	public function setValidThrough(\DateTime $to)
+	public function setValidThrough(\DateTime $to): self
 	{
-		$this->_set('validThrough', $to->format(\DateTime::ISO8601));
+		return $this->_set('validThrough', $to->format(\DateTime::ISO8601));
 	}
 }

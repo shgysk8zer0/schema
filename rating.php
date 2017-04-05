@@ -6,10 +6,10 @@ class Rating extends Thing
 {
 	const ITEMTYPE = 'Rating';
 
-	final public function setAuthor(Thing $author)
+	final public function setAuthor(Thing $author): self
 	{
 		if ($author instanceof Person or $author instanceof Organization) {
-			$this->_set('author', $author);
+			return $this->_set('author', $author);
 		} else {
 			throw new \InvalidArgumentException(sprintf(
 				'Author must be an instance of Person or Organization. Instance of %s given',
@@ -18,18 +18,18 @@ class Rating extends Thing
 		}
 	}
 
-	final public function setBestRating(Int $rating)
+	final public function setBestRating(Int $rating): self
 	{
-		$this->_set('bestRating', $rating);
+		return $this->_set('bestRating', $rating);
 	}
 
-	final public function setRating(Float $rating)
+	final public function setRating(Float $rating): self
 	{
-		$this->_set('ratingValue', $rating);
+		return $this->_set('ratingValue', $rating);
 	}
 
-	final public function setWorstRating(Int $rating)
+	final public function setWorstRating(Int $rating): self
 	{
-		$this->_set('worstRating', $rating);
+		return $this->_set('worstRating', $rating);
 	}
 }

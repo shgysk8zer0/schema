@@ -6,35 +6,37 @@ class VideoObject extends MediaObject
 {
 	const ITEMTYPE = 'VideoObject';
 
-	final public function setActors(Person ...$actors)
+	final public function setActors(Person ...$actors): self
 	{
 		foreach ($actors as $actor) {
 			$this->addActor($actor);
 		}
+		return $this;
 	}
 
-	final public function addActor(Person $actor)
+	final public function addActor(Person $actor): self
 	{
-		$this->_add('actors', $actor);
+		return $this->_add('actors', $actor);
 	}
 
-	final public function setDirector(Person $director)
+	final public function setDirector(Person $director): self
 	{
-		$this->_set('director', $director);
+		return $this->_set('director', $director);
 	}
 
-	final public function setTranscript(String $text)
+	final public function setTranscript(String $text): self
 	{
-		$this->_set('transcript', $text);
+		return $this->_set('transcript', $text);
 	}
 
-	final public function setCaption(String $text)
+	final public function setCaption(String $text): self
 	{
-		$this->_set('caption', $text);
+		return $this->_set('caption', $text);
 	}
 
-	final public function setThumbnail(ImageObject $thumb)
+	final public function setThumbnail(ImageObject $thumb): self
 	{
-		$this->_set('thumbnail', $thumb);
+		return $this->_set('thumbnail', $thumb);
 	}
 }
+

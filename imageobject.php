@@ -5,13 +5,13 @@ class ImageObject extends MediaObject
 {
 	const ITEMTYPE = 'ImageObject';
 
-	final public function setCaption(String $caption)
+	final public function setCaption(String $caption): self
 	{
-		$this->_set('caption', $caption);
+		return $this->_set('caption', $caption);
 	}
 
-	final public function setThumbnail(ImageObject $thumbnail)
+	final public function setThumbnail(ImageObject $thumbnail): self
 	{
-		$this->_set('thumbnail', $thumbnail);
+		return $this->_set('thumbnail', $thumbnail);
 	}
 }

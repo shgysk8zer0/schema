@@ -6,18 +6,18 @@ class AggregateRating extends Rating
 {
 	const ITEMTYPE = 'AggregateRating';
 
-	final public function setItemReviewed(Thing $item)
+	final public function setItemReviewed(Thing $item): self
 	{
-		$this->_set('itemReviewed', $item);
+		return $this->_set('itemReviewed', $item);
 	}
 
-	final public function setRatingCount(Int $ratings)
+	final public function setRatingCount(Int $ratings): self
 	{
-		$this->_set('ratingCount', $ratings);
+		return $this->_set('ratingCount', $ratings);
 	}
 
-	final public function setReviewCount(Int $reviews)
+	final public function setReviewCount(Int $reviews): self
 	{
-		$this->_set('reviewCount', $reviews);
+		return $this->_set('reviewCount', $reviews);
 	}
 }

@@ -70,9 +70,10 @@ abstract class Item implements \JsonSerializable
 		return $el;
 	}
 
-	final protected function _set(String $prop, $value)
+	final protected function _set(String $prop, $value): \shgysk8zer0\Schema\Thing
 	{
 		$this->_data[$prop] = $value;
+		return $this;
 	}
 
 	final public function __get(String $prop)
@@ -80,7 +81,7 @@ abstract class Item implements \JsonSerializable
 		return $this->_data[$prop] ?? null;
 	}
 
-	final protected function _add(String $prop, $value)
+	final protected function _add(String $prop, $value): \shgysk8zer0\Schema\Thing
 	{
 		if (! array_key_exists($prop, $this->_data)) {
 			$this->_data[$prop] = [$value];
@@ -90,12 +91,13 @@ abstract class Item implements \JsonSerializable
 		} else {
 			$this->_data[$prop][] = $value;
 		}
+		return $this;
 	}
 
 	final protected function _addAll(String $prop, Array $values)
 	{
 		foreach ($values as $value) {
-			$this->_add($prop, $value);
+			return $this->_add($prop, $value);
 		}
 	}
 
