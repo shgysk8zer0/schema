@@ -8,26 +8,42 @@ abstract class Item implements \JsonSerializable
 
 	const SCHEMA = 'http://schema.org';
 
+	const MAGIC_PROPERTY = '_data';
+
 	private $_data = [];
 
 	final public function __get(String $prop)
 	{
-		return $this->_data[$prop] ?? null;
+		return $this->{self::MAGIC_PROPERTY}[$prop] ?? null;
+	}
+
+	final public function __set(String $prop, $value)
+	{
+		$prop = ucfirst($prop);
+		if (method_exists($this, "add{$prop}")) {
+			call_user_func([$this, "add{$prop}"], $value);
+		} elseif (method_exists($this, "set{$prop}")) {
+			call_user_func([$this, "set{$prop}"], $value);
+		} elseif (method_exists($this, "set{$prop}s")) {
+			call_user_func([$this, "set{$prop}s"], $value);
+		} else {
+			throw new \Exception("Attempting to set invalid property: '{$prop}'");
+		}
 	}
 
 	final public function __isset(String $prop): Bool
 	{
-		return array_key_exists($this->_data[$prop]);
+		return array_key_exists($this->{self::MAGIC_PROPERTY}[$prop]);
 	}
 
 	final public function __unset(String $prop)
 	{
-		unset($this->_data[$prop]);
+		unset($this->{self::MAGIC_PROPERTY}[$prop]);
 	}
 
 	final public function __debugInfo(): Array
 	{
-		return $this->_data;
+		return $this->{self::MAGIC_PROPERTY};
 	}
 
 	public function jsonSerialize(): Array
@@ -47,7 +63,7 @@ abstract class Item implements \JsonSerializable
 			'@type'    => $this::ITEMTYPE
 		];
 
-		foreach ($this->_data as $prop => $value) {
+		foreach ($this->{self::MAGIC_PROPERTY} as $prop => $value) {
 			if ($value instanceof self) {
 				$data[$prop] = $value->getArrayCopy();
 			} elseif(is_array($value)) {
