@@ -5,18 +5,63 @@ namespace shgysk8zer0\Schema\Abstracts;
 abstract class Item implements \JsonSerializable
 {
 	use \shgysk8zer0\Schema\Traits\Filters;
+
 	const SCHEMA = 'http://schema.org';
 
 	private $_data = [];
 
-	final public function jsonSerialize(): Array
+	final public function __get(String $prop)
 	{
-		return $this->getArrayCopy();
+		return $this->_data[$prop] ?? null;
+	}
+
+	final public function __isset(String $prop): Bool
+	{
+		return array_key_exists($this->_data[$prop]);
+	}
+
+	final public function __unset(String $prop)
+	{
+		unset($this->_data[$prop]);
 	}
 
 	final public function __debugInfo(): Array
 	{
 		return $this->_data;
+	}
+
+	public function jsonSerialize(): Array
+	{
+		return $this->getArrayCopy();
+	}
+
+	final public function getSchemaURL(): String
+	{
+		return $this::SCHEMA . '/' . $this::ITEMTYPE;
+	}
+
+	public function getArrayCopy()
+	{
+		$data = [
+			'@context' => $this::SCHEMA,
+			'@type'    => $this::ITEMTYPE
+		];
+
+		foreach ($this->_data as $prop => $value) {
+			if ($value instanceof self) {
+				$data[$prop] = $value->getArrayCopy();
+			} elseif(is_array($value)) {
+				$data[$prop] = [];
+				foreach ($value as $item) {
+					$data[$prop][] = $item instanceof self
+						? $item->getArrayCopy()
+						: $item;
+				}
+			} else {
+				$data[$prop] = $value;
+			}
+		}
+		return $data;
 	}
 
 	final public function setDOMData(\DOMElement $el, $item = 0, $xpath = null): \DOMElement
@@ -76,11 +121,6 @@ abstract class Item implements \JsonSerializable
 		return $this;
 	}
 
-	final public function __get(String $prop)
-	{
-		return $this->_data[$prop] ?? null;
-	}
-
 	final protected function _add(String $prop, $value): \shgysk8zer0\Schema\Thing
 	{
 		if (! array_key_exists($prop, $this->_data)) {
@@ -97,47 +137,8 @@ abstract class Item implements \JsonSerializable
 	final protected function _addAll(String $prop, Array $values)
 	{
 		foreach ($values as $value) {
-			return $this->_add($prop, $value);
+			$this->_add($prop, $value);
 		}
+		return $this;
 	}
-
-	final public function __isset(String $prop): Bool
-	{
-		return array_key_exists($this->_data[$prop]);
-	}
-
-	final public function __unset(String $prop)
-	{
-		unset($this->_data[$prop]);
-	}
-
-	final public function getSchemaURL(): String
-	{
-		return $this::SCHEMA . '/' . $this::ITEMTYPE;
-	}
-
-	final public function getArrayCopy()
-	{
-		$data = [
-			'@context' => $this::SCHEMA,
-			'@type'    => $this::ITEMTYPE
-		];
-
-		foreach ($this->_data as $prop => $value) {
-			if ($value instanceof self) {
-				$data[$prop] = $value->getArrayCopy();
-			} elseif(is_array($value)) {
-				$data[$prop] = [];
-				foreach ($value as $item) {
-					$data[$prop][] = $item instanceof self
-						? $item->getArrayCopy()
-						: $item;
-				}
-			} else {
-				$data[$prop] = $value;
-			}
-		}
-		return $data;
-	}
-
 }
