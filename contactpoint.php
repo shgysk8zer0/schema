@@ -13,6 +13,11 @@ class ContactPoint extends Thing
 		return $this->_set('contactType', $type);
 	}
 
+	final public function setContactOption(ContactPointOption $opt): self
+	{
+		return $this->_set('contactOption', $opt);
+	}
+
 	final public function setLanguage(Language $lang): self
 	{
 		return $this->_set('language', $lang);

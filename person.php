@@ -60,4 +60,14 @@ class Person extends Thing
 	{
 		return $this->_set('parent', $parent);
 	}
+
+	final public function setContactPoints(ContactPoint ...$contacts): self
+	{
+		return $this->_addAll('contactPoint', $contacts);
+	}
+
+	final public function addContactPoint(ContactPoint $contact): self
+	{
+		return $this->_add('contactPoint', $contact);
+	}
 }
