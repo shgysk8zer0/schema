@@ -8,6 +8,12 @@ class ItemList extends Intangible
 
 	const ITEMTYPE = 'ItemList';
 
+	const ITEMPROPS = [
+		'itemListElement',
+		'itemListOrder',
+		'numberOfItems',
+	];
+
 	final public function addItemListElement($el): self
 	{
 		if (is_string($el) or $el instanceof Thing) {

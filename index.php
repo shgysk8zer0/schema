@@ -7,12 +7,15 @@ use \shgysk8zer0\Core\{Console};
 set_include_path(dirname(__DIR__, 2));
 spl_autoload_register('spl_autoload');
 header('Content-Type: application/json');
-$thing = new Person;
-$thing->name = 'Name';
-$thing->description = 'Description';
-
-print_r($thing);
-exit;
+// $me = new Person;
+// $me->givenName = 'Chris';
+// $me->familyName = 'Zuber';
+// $me->name = "{$me->givenName} {$me->familyName}";
+// $me->description = "{$me->name}: Description";
+//
+// print_r($me);
+// exit;
+// exit(json_encode($me, JSON_PRETTY_PRINT));
 
 $chris     = new Person;
 $addr      = new PostalAddress;
@@ -79,5 +82,5 @@ $chris->worksFor       = $org;
 $chris->image          = $pic;
 $chris->setContactPoints($home, $work);
 
-print_r($chris);
-// exit(json_encode($chris, JSON_PRETTY_PRINT) . PHP_EOL);
+// print_r($chris);
+exit(json_encode($chris, JSON_PRETTY_PRINT) . PHP_EOL);

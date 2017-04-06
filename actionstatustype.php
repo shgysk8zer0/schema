@@ -7,4 +7,6 @@ class ActionStatusType extends Enumeration
 	use Traits\Data;
 
 	const ITEMTYPE = 'ActionStatusType';
+
+	const ITEMPROPS = [];
 }

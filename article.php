@@ -8,6 +8,15 @@ class Article extends CreativeWork
 
 	const ITEMTYPE = 'Article';
 
+	const ITEMPROPS = [
+		'articleBody',
+		'articleSection',
+		'pageEnd',
+		'pageStart',
+		'pagination',
+		'wordCount',
+	];
+
 	final public function setArticleBody(String $body): self
 	{
 		return $this->_set('articleBody', $body);

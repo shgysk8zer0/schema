@@ -6,4 +6,6 @@ class Restaurant extends FoodEstablishment
 	use Traits\Data;
 
 	const ITEMTYPE = 'Restaurant';
+
+	const ITEMPROPS = [];
 }

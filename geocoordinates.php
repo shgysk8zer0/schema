@@ -8,6 +8,14 @@ class GeoCoordinates extends Thing
 
 	const ITEMTYPE = 'GeoCoordinates';
 
+	const ITEMPROPS = [
+		'address',
+		'elevation',
+		'longitude',
+		'latitude',
+		'postalCode',
+	];
+
 	final public function setAddress(PostalAddress $address): self
 	{
 		return $this->_set('address', $address);

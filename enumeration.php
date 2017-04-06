@@ -7,4 +7,6 @@ class Enumeration extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'Enumeration';
+
+	const ITEMPROPS = [];
 }

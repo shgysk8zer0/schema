@@ -7,4 +7,6 @@ class EmploymentAgency extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'EmploymentAgency';
+
+	const ITEMPROPS = [];
 }

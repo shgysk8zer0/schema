@@ -8,6 +8,13 @@ class LocalBusiness extends Organization
 
 	const ITEMTYPE = 'LocalBusiness';
 
+	const ITEMPROPS = [
+		'currenciesAccepted',
+		'openingHours',
+		'paymentAccepted',
+		'priceRange',
+	];
+
 	final public function setCurrenciesAccepted(String $currencies): self
 	{
 		return $this->_set('currenciesAccepted', $currencies);

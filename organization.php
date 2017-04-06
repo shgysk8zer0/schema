@@ -9,6 +9,18 @@ class Organization extends Thing
 
 	const ITEMTYPE = 'Organization';
 
+	const ITEMPROPS = [
+		'contactPoint',
+		'employees',
+		'parentOrganization',
+		'legalName',
+		'logo',
+		'address',
+		'email',
+		'telephone',
+		'faxNumber',
+	];
+
 	final public function setContactPoints(ContactPoint ...$points): self
 	{
 		foreach ($points as $point) {

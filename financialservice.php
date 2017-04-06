@@ -8,6 +8,10 @@ class FinancialService extends LocalBusiness
 
 	const ITEMTYPE = 'FinancialService';
 
+	const ITEMPROPS = [
+		'feesAndCommissionsSpecification',
+	];
+
 	final public function setFeesAndCommissionsSpecification(String $spec): self
 	{
 		return $this->_set('feesAndCommissionsSpecification', $spec);

@@ -7,6 +7,29 @@ class Event extends Thing
 
 	const ITEMTYPE = 'Event';
 
+	const ITEMPROPS = [
+		'about',
+		'actors',
+		'aggregateRating',
+		'composer',
+		'contributor',
+		'doorTime',
+		'endDate',
+		'isAccessibleForFree',
+		'location',
+		'maximumAttendeeCapacity',
+		'offers',
+		'organizer',
+		'performers',
+		'reviews',
+		'sponsor',
+		'superEvent',
+		'subEvent',
+		'typicalAgeRange',
+		'workFeatured',
+		'workPerformed',
+	];
+
 	final public function setAbout(Thing $about):self
 	{
 		return $this->_set('about', $about);
@@ -162,7 +185,7 @@ class Event extends Thing
 
 	final public function setSuperEvent(Event $event): self
 	{
-		return $this->_set('setSuperEvent', $event);
+		return $this->_set('superEvent', $event);
 	}
 
 	final public function addSubEvents(Event ...$events): self

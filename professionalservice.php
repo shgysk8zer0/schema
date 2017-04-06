@@ -7,4 +7,6 @@ class ProfessionalService extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'ProfessionalService';
+
+	const ITEMPROPS = [];
 }

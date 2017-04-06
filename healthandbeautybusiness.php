@@ -7,4 +7,6 @@ class HealthAndBeautyBusiness extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'HealthAndBeautyBusiness';
+
+	const ITEMPROPS = [];
 }

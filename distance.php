@@ -7,4 +7,6 @@ class Distance extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'Distance';
+
+	const ITEMPROPS = [];
 }

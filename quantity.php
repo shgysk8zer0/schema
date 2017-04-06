@@ -7,4 +7,6 @@ class Quantity extends Intangible
 	use Traits\Data;
 
 	const ITEMTYPE = 'Quantity';
+
+	const ITEMPROPS = [];
 }

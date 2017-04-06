@@ -8,6 +8,12 @@ class AggregateRating extends Rating
 
 	const ITEMTYPE = 'AggregateRating';
 
+	const ITEMPROPS = [
+		'itemReviewed',
+		'ratingCount',
+		'reviewCount',
+	];
+
 	final public function setItemReviewed(Thing $item): self
 	{
 		return $this->_set('itemReviewed', $item);

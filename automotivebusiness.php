@@ -7,4 +7,6 @@ class AutomotiveBusiness extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'AutomotiveBusiness';
+
+	const ITEMPROPS = [];
 }

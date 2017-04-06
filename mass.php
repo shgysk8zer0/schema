@@ -7,4 +7,6 @@ class Mass extends Quantity
 	use Traits\Data;
 
 	const ITEMTYPE = 'Mass';
+
+	const ITEMPROPS = [];
 }

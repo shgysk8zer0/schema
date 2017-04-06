@@ -8,6 +8,31 @@ class CreativeWork extends Thing
 
 	const ITEMTYPE = 'CreativeWork';
 
+	const ITEMPROPS = [
+		'about',
+		'accountablePerson',
+		'aggregateRating',
+		'alternativeHeadline',
+		'associatedMedia',
+		'author',
+		'copyrightHolder',
+		'copyrightYear',
+		'editor',
+		'genre',
+		'headline',
+		'isFamilyFriendly',
+		'keywords',
+		'offers',
+		'producer',
+		'publisher',
+		'review',
+		'sourceOrganization',
+		'sponsor',
+		'text',
+		'video',
+		'workExample',
+	];
+
 	final public function setAbout(Thing $thing):self
 	{
 		return $this->_set('about', $thing);

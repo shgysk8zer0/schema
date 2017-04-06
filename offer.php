@@ -8,6 +8,11 @@ class Offer extends Thing
 
 	const ITEMTYPE = 'Offer';
 
+	const ITEMPROPS = [
+		'price',
+		'priceCurrency',
+	];
+
 	final public function setPrice(Float $price): self
 	{
 		return $this->_set('price', round($price, 2));

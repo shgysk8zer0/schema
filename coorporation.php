@@ -8,6 +8,10 @@ class Coorporation extends Organization
 
 	const ITEMTYPE = 'Coorporation';
 
+	const ITEMPROPS = [
+		'tickerSymbol',
+	];
+
 	final public function setTickerSymbol(String $symbol)
 	{
 		$this->_set('tickerSymbol', $symbol);

@@ -7,4 +7,6 @@ class SportsActivityLocation extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'SportsActivityLocation';
+
+	const ITEMPROPS = [];
 }

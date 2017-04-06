@@ -7,4 +7,6 @@ class Language extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'Language';
+
+	const ITEMPROPS = [];
 }

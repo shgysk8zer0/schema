@@ -8,6 +8,12 @@ class MenuItem extends Intangible
 
 	const ITEMTYPE = 'MenuItem';
 
+	const ITEMPROPS = [
+		'nutrition',
+		'offers',
+		'suitableDietFor',
+	];
+
 	final public function setNutrition(NutritionInformation $nutrition): self
 	{
 		return $this->_set('nutrition', $nutrition);

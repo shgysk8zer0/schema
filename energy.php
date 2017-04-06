@@ -7,4 +7,6 @@ class Energy extends Quantity
 	use Traits\Data;
 
 	const ITEMTYPE = 'Energy';
+
+	const ITEMPROPS = [];
 }

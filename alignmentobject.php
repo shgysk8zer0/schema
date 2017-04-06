@@ -8,6 +8,14 @@ class AlignmentObject extends Intangible
 
 	const ITEMTYPE = 'AlignmentObject';
 
+	const ITEMPROPS = [
+		'alignmentType',
+		'educationalFramework',
+		'targetDescription',
+		'targetName',
+		'targetUrl',
+	];
+
 	final public function setAlignmentType(String $type): self
 	{
 		return $this->_set('alignmentType', $type);

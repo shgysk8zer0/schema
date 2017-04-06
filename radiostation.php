@@ -7,4 +7,6 @@ class RadioStation extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'RadioStation';
+
+	const ITEMPROPS = [];
 }

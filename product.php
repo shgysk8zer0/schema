@@ -8,6 +8,14 @@ class Product extends Thing
 
 	const ITEMTYPE = 'Product';
 
+	const ITEMPROPS = [
+		'aggregateRating',
+		'audience',
+		'award',
+		'brand',
+		'manufacturer',
+	];
+
 	final public function setAggregateRating(AggregateRating $rating): self
 	{
 		return $this->_set('aggregateRating', $rating);

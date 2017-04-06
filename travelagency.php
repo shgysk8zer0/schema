@@ -7,4 +7,6 @@ class TravelAgency extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'TravelAgency';
+
+	const ITEMPROPS = [];
 }

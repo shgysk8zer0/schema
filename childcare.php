@@ -7,4 +7,6 @@ class ChildCare extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'ChildCare';
+
+	const ITEMPROPS = [];
 }

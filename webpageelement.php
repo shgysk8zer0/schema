@@ -7,4 +7,6 @@ class WebPageElement extends CreativeWork
 	use Traits\Data;
 
 	const ITEMTYPE = 'WebPageElement';
+
+	const ITEMPROPS = [];
 }

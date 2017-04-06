@@ -7,4 +7,6 @@ class RecyclingCenter extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'RecyclingCenter';
+
+	const ITEMPROPS = [];
 }

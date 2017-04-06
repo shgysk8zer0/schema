@@ -7,4 +7,6 @@ class Speciality extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'Speciality';
+
+	const ITEMPROPS = [];
 }

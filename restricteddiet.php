@@ -6,4 +6,6 @@ class RestrictedDiet extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'RestrictedDiet';
+
+	const ITEMPROPS = [];
 }

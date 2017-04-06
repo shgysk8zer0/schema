@@ -7,4 +7,6 @@ class HomeAndConstructionBusiness extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'HomeAndConstructionBusiness';
+
+	const ITEMPROPS = [];
 }

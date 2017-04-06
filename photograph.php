@@ -7,4 +7,6 @@ class Photograph extends CreativeWork
 	use Traits\Data;
 
 	const ITEMTYPE = 'Photograph';
+
+	const ITEMPROPS = [];
 }

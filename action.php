@@ -6,6 +6,21 @@ class Action extends Thing
 {
 	use Traits\Data;
 
+	const ITEMTYPE = 'Action';
+
+	const ITEMPROPS = [
+		'actionStatus',
+		'agent',
+		'endTime',
+		'error',
+		'instrument',
+		'location',
+		'object',
+		'participant',
+		'result',
+		'target',
+	];
+
 	final public function setActionStatus(ActionStatusType $status): self
 	{
 		return $this->_set('actionStatus', $status);

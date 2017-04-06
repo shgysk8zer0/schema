@@ -6,6 +6,16 @@ class SoftwareApplication extends CreativeWork
 {
 	use Traits\Data;
 
+	const ITEMPROPS = [
+		'applicationCategory',
+		'applicationSubCategory',
+		'applicationSuite',
+		'availableOnDevice',
+		'countriesNotSupported',
+		'countriesSupported',
+		'downloadUrl',
+	];
+
 	final public function setApplicationCategory(String $category): self
 	{
 		return $this->_set('applicationCategory', $category);

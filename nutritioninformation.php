@@ -6,6 +6,23 @@ class NutritionInformation extends StructuredValue
 {
 	use Traits\Data;
 
+	const ITEMTYPE = 'NutritionInformation';
+
+	const ITEMPROPS = [
+		'calories',
+		'carbohydrateContent',
+		'cholesterolContent',
+		'fatContent',
+		'fiberContent',
+		'proteinContent',
+		'setSaturatedFatContent',
+		'servingSize',
+		'sodiumContent',
+		'sugarContent',
+		'transFatContent',
+		'unsaturatedFatContent',
+	];
+
 	final public function setCalories(Energy $calories): self
 	{
 		return $this->_set('calories', $calories);

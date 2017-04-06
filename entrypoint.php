@@ -10,7 +10,16 @@ class EntryPoint extends Intangible
 {
 	use Traits\Data;
 
-	const ITEMTYPE = 'Intangible';
+	const ITEMTYPE = 'EntryPoint';
+
+	const ITEMPROPS = [
+		'actionApplication',
+		'actionPlatform',
+		'contentType',
+		'encodingType',
+		'httpMethod',
+		'urlTemplate',
+	];
 
 	final public function setActionApplication(SoftwareApplication $app): self
 	{

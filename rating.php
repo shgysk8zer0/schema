@@ -8,6 +8,13 @@ class Rating extends Thing
 
 	const ITEMTYPE = 'Rating';
 
+	const ITEMPROPS = [
+		'author',
+		'bestRating',
+		'ratingValue',
+		'worstRating',
+	];
+
 	final public function setAuthor(Thing $author): self
 	{
 		if ($author instanceof Person or $author instanceof Organization) {

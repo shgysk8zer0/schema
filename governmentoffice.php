@@ -7,4 +7,6 @@ class GovernmentOffice extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'GovernmentOffice';
+
+	const ITEMPROPS = [];
 }

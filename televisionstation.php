@@ -7,4 +7,6 @@ class TelevisionStation extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'TelevisionStation';
+
+	const ITEMPROPS = [];
 }

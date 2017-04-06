@@ -8,6 +8,11 @@ class Audience extends Thing
 
 	const ITEMTYPE = 'Audience';
 
+	const ITEMPROPS = [
+		'audienceType',
+		'geographicArea',
+	];
+
 	final public function setAudienceType(String $type): self
 	{
 		return $this->_set('audienceType', $type);

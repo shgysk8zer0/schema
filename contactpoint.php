@@ -9,6 +9,17 @@ class ContactPoint extends Thing
 
 	const ITEMTYPE = 'ContactPoint';
 
+	const ITEMPROPS = [
+		'contactType',
+		'contactOption',
+		'language',
+		'hoursAvailable',
+		'address',
+		'email',
+		'telephone',
+		'faxNumber',
+	];
+
 
 	final public function setContactType(String $type): self
 	{

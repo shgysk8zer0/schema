@@ -9,6 +9,18 @@ class Place extends Thing
 
 	const ITEMTYPE = 'Place';
 
+	const ITEMPROPS = [
+		'aggregateRating',
+		'containedInPlace',
+		'containsPlace',
+		'geo',
+		'photo',
+		'address',
+		'email',
+		'telephone',
+		'faxNumber',
+	];
+
 	final public function setAggregateRating(AggregateRating $rating): self
 	{
 		return $this->_set('aggregateRating', $rating);

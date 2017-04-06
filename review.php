@@ -8,6 +8,12 @@ class Review extends CreativeWork
 
 	const ITEMTYPE = 'Review';
 
+	const ITEMPROPS = [
+		'itemReviewed',
+		'reviewBody',
+		'reviewRating',
+	];
+
 	final public function setItemReviewed(Thing $item): self
 	{
 		return $this->_set('itemReviewed', $item);

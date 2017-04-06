@@ -7,4 +7,6 @@ class Library extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'Library';
+
+	const ITEMPROPS = [];
 }

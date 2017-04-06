@@ -8,6 +8,11 @@ class Menu extends CreativeWork
 
 	const ITEMTYPE = 'Menu';
 
+	const ITEMPROPS = [
+		'hasMenuItem',
+		'hasMenuSection',
+	];
+
 	final public function setHasMenuItems(MenuItem ...$items): self
 	{
 		foreach ($items as $item) {

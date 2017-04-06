@@ -8,6 +8,10 @@ class AudioObject extends MediaObject
 
 	const ITEMTYPE = 'AudioObject';
 
+	const ITEMPROPS = [
+		'transcript',
+	];
+
 	final public function setTranscript(String $text): self
 	{
 		return $this->_set('transcript', $text);

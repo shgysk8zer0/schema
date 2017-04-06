@@ -11,7 +11,7 @@ trait Data
 		if (! array_key_exists(self::ITEMTYPE, $this->_data)) {
 			$this->_data[self::ITEMTYPE] = [];
 		}
-		if (in_array($prop, self::PROPS)) {
+		if (in_array($prop, self::ITEMPROPS)) {
 			$this->_data[self::ITEMTYPE][$prop] = $value;
 			return $this;
 		} elseif (! empty(class_parents(__CLASS__))) {
@@ -56,6 +56,14 @@ trait Data
 		}
 	}
 
+	protected function _addAll(String $prop, Array $values)
+	{
+		foreach ($values as $value) {
+			$this->_add($prop, $value);
+		}
+		return $this;
+	}
+
 	public function __isset(String $prop): Bool
 	{
 		if (array_key_exists($prop, $this->_data[self::ITEMTYPE])) {
@@ -94,20 +102,23 @@ trait Data
 			'@type'    => $this::ITEMTYPE
 		];
 
-		foreach ($this->_data[self::ITEMTYPE] as $prop => $value) {
-			if ($value instanceof self) {
-				$data[$prop] = $value->getArrayCopy();
-			} elseif(is_array($value)) {
-				$data[$prop] = [];
-				foreach ($value as $item) {
-					$data[$prop][] = $item instanceof self
+		foreach (array_keys($this->_data) as $key) {
+			foreach ($this->_data[$key] as $prop => $value) {
+				if ($value instanceof Thing) {
+					$data[$prop] = $value->getArrayCopy();
+				} elseif(is_array($value)) {
+					$data[$prop] = [];
+					foreach ($value as $item) {
+						$data[$prop][] = $item instanceof Thing
 						? $item->getArrayCopy()
 						: $item;
+					}
+				} else {
+					$data[$prop] = $value;
 				}
-			} else {
-				$data[$prop] = $value;
 			}
 		}
+
 		return $data;
 	}
 }

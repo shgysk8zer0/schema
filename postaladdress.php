@@ -5,7 +5,17 @@ namespace shgysk8zer0\Schema;
 class PostalAddress extends ContactPoint
 {
 	use Traits\Data;
+
 	const ITEMTYPE = 'PostalAddress';
+
+	const ITEMPROPS = [
+		'streetAddress',
+		'postOfficeBoxNumber',
+		'addressLocality',
+		'addressCountry',
+		'addressRegion',
+		'postalCode',
+	];
 
 	final public function setStreetAddress(String $addr): self
 	{

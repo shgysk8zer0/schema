@@ -8,6 +8,14 @@ class NewsArticle extends Article
 
 	const ITEMTYPE = 'NewsArticle';
 
+	const ITEMPROPS = [
+		'dateline',
+		'printColumn',
+		'printEdition',
+		'printPage',
+		'printSection',
+	];
+
 	final public function setDateline(String $loc): self
 	{
 		return $this->_set('dateline', $loc);

@@ -4,7 +4,13 @@ namespace shgysk8zer0\Schema;
 class ImageObject extends MediaObject
 {
 	use Traits\Data;
+
 	const ITEMTYPE = 'ImageObject';
+
+	const ITEMPROPS = [
+		'caption',
+		'thumbnail',
+	];
 
 	final public function setCaption(String $caption): self
 	{

@@ -7,4 +7,6 @@ class AnimalShelter extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'AnimalShelter';
+
+	const ITEMPROPS = [];
 }

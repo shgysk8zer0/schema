@@ -8,6 +8,18 @@ class MediaObject extends CreativeWork
 
 	const ITEMTYPE = 'MediaObject';
 
+	const ITEMPROPS = [
+		'associatedArticle',
+		'width',
+		'height',
+		'encodingFormat',
+		'contentSize',
+		'contentUrl',
+		'requiresSubscription',
+		'uploadDate',
+		'expires',
+	];
+
 	final public function setAssociatedArticle(NewsArticle $article): self
 	{
 		return $this->_set('associatedArticle', $article);

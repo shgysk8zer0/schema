@@ -8,6 +8,13 @@ class FoodEstablishment extends LocalBusiness
 
 	const ITEMTYPE = 'FoodEstablishment';
 
+	const ITEMPROPS = [
+		'acceptsReservation',
+		'hasMenu',
+		'servesCuisine',
+		'starRating',
+	];
+
 	final public function setAcceptsReservations(Bool $accepted): self
 	{
 		return $this->_set('acceptsReservation', $accepted);

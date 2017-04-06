@@ -8,6 +8,13 @@ class ListItem extends Intangible
 
 	const ITEMTYPE = 'ListItem';
 
+	const ITEMPROPS = [
+		'item',
+		'nextItem',
+		'positioin',
+		'previousItem',
+	];
+
 	final public function setItem(Thing $item): self
 	{
 		return $this->_set('item', $item);

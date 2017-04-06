@@ -7,4 +7,6 @@ class InternetCafe extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'InternetCafe';
+
+	const ITEMPROPS = [];
 }

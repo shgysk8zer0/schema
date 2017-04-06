@@ -9,6 +9,16 @@ class QuantitativeValue extends Thing
 
 	const ITEMTYPE = 'QuantitativeValue';
 
+	const ITEMPROPS = [
+		'additionalProperty',
+		'maxValue',
+		'minValue',
+		'unitCode',
+		'unitText',
+		'value',
+		'valueReference',
+	];
+
 	final public function addAdditionalProperty(PropoertyValue $prop): self
 	{
 		return $this->_add('additionalProperty', $prop);

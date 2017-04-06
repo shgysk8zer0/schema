@@ -8,6 +8,14 @@ class VideoObject extends MediaObject
 
 	const ITEMTYPE = 'VideoObject';
 
+	const ITEMPROPS = [
+		'actors',
+		'director',
+		'transcript',
+		'caption',
+		'thumbnail',
+	];
+
 	final public function setActors(Person ...$actors): self
 	{
 		foreach ($actors as $actor) {

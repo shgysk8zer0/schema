@@ -7,4 +7,6 @@ class AdministrativeArea extends Place
 	use Traits\Data;
 
 	const ITEMTYPE = 'AdministrativeArea';
+
+	const ITEMPROPS = [];
 }

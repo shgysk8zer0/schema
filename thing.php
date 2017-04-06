@@ -2,13 +2,16 @@
 
 namespace shgysk8zer0\Schema;
 
-class Thing extends Abstracts\Item
+class Thing implements \JsonSerializable
 {
 	use Traits\Data;
+	use \shgysk8zer0\Schema\Traits\Filters;
+
+	const SCHEMA = 'http://schema.org';
 
 	const ITEMTYPE = 'Thing';
 
-	const PROPS = [
+	const ITEMPROPS = [
 		'name',
 		'sameAs',
 		'url',
@@ -21,6 +24,7 @@ class Thing extends Abstracts\Item
 		'identifier',
 		'mainEntityOfPage',
 	];
+
 
 	final public function setName(String $name): self
 	{

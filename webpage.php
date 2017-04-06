@@ -8,6 +8,16 @@ class WebPage extends CreativeWork
 
 	const ITEMTYPE = 'WebPage';
 
+	const ITEMPROPS = [
+		'breadcrumbList',
+		'lastReviewed',
+		'mainContentOfPage',
+		'relatedLink',
+		'reviewedBy',
+		'significantLink',
+		'specialty',
+	];
+
 	final public function setBreadcrumb(BreadcrumbList $list): self
 	{
 		return $this->_set('breadcrumbList', $list);

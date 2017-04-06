@@ -8,6 +8,12 @@ class Brand extends Organization
 
 	const ITEMTYPE = 'Brand';
 
+	const ITEMPROPS = [
+		'aggregateRating',
+		'logo',
+		'review',
+	];
+
 	final public function setAggregateRating(AggregateRating $rating): self
 	{
 		return $this->_set('aggregateRating', $rating);

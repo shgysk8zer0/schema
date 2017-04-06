@@ -7,4 +7,6 @@ class Intangible extends Thing
 	use Traits\Data;
 
 	const ITEMTYPE = 'Intangible';
+
+	const ITEMPROPS = [];
 }

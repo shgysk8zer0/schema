@@ -7,4 +7,6 @@ class LegalService extends LocalBusiness
 	use Traits\Data;
 
 	const ITEMTYPE = 'LegalService';
+
+	const ITEMPROPS = [];
 }

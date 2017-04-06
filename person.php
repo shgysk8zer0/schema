@@ -9,7 +9,22 @@ class Person extends Thing
 
 	const ITEMTYPE = 'Person';
 
-	const PROPS = [];
+	const ITEMPROPS = [
+		'givenName',
+		'additionalName',
+		'familyName',
+		'affiliation',
+		'worksFor',
+		'jobTitle',
+		'birthDate',
+		'children',
+		'parent',
+		'contactPoint',
+		'address',
+		'email',
+		'telephone',
+		'faxNumber',
+	];
 
 	final public function setFullName(String $first, String $middle, String $last): self
 	{

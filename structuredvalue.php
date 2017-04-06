@@ -7,4 +7,6 @@ class StructuredValue extends Intangible
 	use Traits\Data;
 
 	const ITEMTYPE = 'StructuredValue';
+
+	const ITEMPROPS = [];
 }
