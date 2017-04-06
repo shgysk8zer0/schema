@@ -95,7 +95,7 @@ trait Data
 		return $this::SCHEMA . '/' . $this::ITEMTYPE;
 	}
 
-	public function getArrayCopy()
+	public function getArrayCopy(): Array
 	{
 		$data = [
 			'@context' => $this::SCHEMA,
