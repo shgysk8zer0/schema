@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Audience extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Audience';
 
 	final public function setAudienceType(String $type): self

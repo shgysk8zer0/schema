@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Article extends CreativeWork
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Article';
 
 	final public function setArticleBody(String $body): self
@@ -54,4 +56,3 @@ class Article extends CreativeWork
 		return $this->_set('wordCount', $words);
 	}
 }
-

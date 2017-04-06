@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class NutritionInformation extends StructuredValue
 {
+	use Traits\Data;
+
 	final public function setCalories(Energy $calories): self
 	{
 		return $this->_set('calories', $calories);

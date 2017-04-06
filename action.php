@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Action extends Thing
 {
+	use Traits\Data;
+
 	final public function setActionStatus(ActionStatusType $status): self
 	{
 		return $this->_set('actionStatus', $status);

@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class MediaObject extends CreativeWork
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'MediaObject';
 
 	final public function setAssociatedArticle(NewsArticle $article): self

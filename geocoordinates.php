@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class GeoCoordinates extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'GeoCoordinates';
 
 	final public function setAddress(PostalAddress $address): self

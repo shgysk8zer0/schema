@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class WebPage extends CreativeWork
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'WebPage';
 
 	final public function setBreadcrumb(BreadcrumbList $list): self

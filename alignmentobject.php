@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class AlignmentObject extends Intangible
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'AlignmentObject';
 
 	final public function setAlignmentType(String $type): self

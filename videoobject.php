@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class VideoObject extends MediaObject
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'VideoObject';
 
 	final public function setActors(Person ...$actors): self
@@ -39,4 +41,3 @@ class VideoObject extends MediaObject
 		return $this->_set('thumbnail', $thumb);
 	}
 }
-

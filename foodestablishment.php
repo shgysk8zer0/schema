@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class FoodEstablishment extends LocalBusiness
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'FoodEstablishment';
 
 	final public function setAcceptsReservations(Bool $accepted): self

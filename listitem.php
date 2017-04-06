@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class ListItem extends Intangible
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'ListItem';
 
 	final public function setItem(Thing $item): self

@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Product extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Product';
 
 	final public function setAggregateRating(AggregateRating $rating): self

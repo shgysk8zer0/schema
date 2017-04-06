@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class CreativeWork extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'CreativeWork';
 
 	final public function setAbout(Thing $thing):self

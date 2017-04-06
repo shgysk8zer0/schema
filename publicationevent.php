@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class PublicationEvent extends Event
 {
+	use Traits\Data;
+
 	const ITEMPROP = 'PublicationEvent';
 
 	final public function setIsAccessibleForFree(Bool $free): self

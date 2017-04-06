@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Review extends CreativeWork
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Review';
 
 	final public function setItemReviewed(Thing $item): self

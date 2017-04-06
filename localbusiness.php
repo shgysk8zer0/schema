@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class LocalBusiness extends Organization
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'LocalBusiness';
 
 	final public function setCurrenciesAccepted(String $currencies): self

@@ -4,6 +4,7 @@ namespace shgysk8zer0\Schema;
 
 class SoftwareApplication extends CreativeWork
 {
+	use Traits\Data;
 
 	final public function setApplicationCategory(String $category): self
 	{

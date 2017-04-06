@@ -4,6 +4,7 @@ namespace shgysk8zer0\Schema;
 
 class Organization extends Thing
 {
+	use Traits\Data;
 	use Traits\ContactInfo;
 
 	const ITEMTYPE = 'Organization';

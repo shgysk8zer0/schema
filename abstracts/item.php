@@ -7,78 +7,74 @@ abstract class Item implements \JsonSerializable
 	use \shgysk8zer0\Schema\Traits\Filters;
 
 	const SCHEMA = 'http://schema.org';
+	//
+	// final public function __get(String $prop)
+	// {
+	// 	return $this->{self::MAGIC_PROPERTY}[$prop] ?? null;
+	// }
+	//
+	// final public function __set(String $prop, $value)
+	// {
+	// 	$prop = ucfirst($prop);
+	// 	if (method_exists($this, "add{$prop}")) {
+	// 		call_user_func([$this, "add{$prop}"], $value);
+	// 	} elseif (method_exists($this, "set{$prop}")) {
+	// 		call_user_func([$this, "set{$prop}"], $value);
+	// 	} elseif (method_exists($this, "set{$prop}s")) {
+	// 		call_user_func([$this, "set{$prop}s"], $value);
+	// 	} else {
+	// 		throw new \Exception("Attempting to set invalid property: '{$prop}'");
+	// 	}
+	// }
+	//
+	// final public function __isset(String $prop): Bool
+	// {
+	// 	return array_key_exists($this->{self::MAGIC_PROPERTY}[$prop]);
+	// }
+	//
+	// final public function __unset(String $prop)
+	// {
+	// 	unset($this->{self::MAGIC_PROPERTY}[$prop]);
+	// }
+	//
+	// final public function __debugInfo(): Array
+	// {
+	// 	return $this->{self::MAGIC_PROPERTY};
+	// }
 
-	const MAGIC_PROPERTY = '_data';
-
-	private $_data = [];
-
-	final public function __get(String $prop)
-	{
-		return $this->{self::MAGIC_PROPERTY}[$prop] ?? null;
-	}
-
-	final public function __set(String $prop, $value)
-	{
-		$prop = ucfirst($prop);
-		if (method_exists($this, "add{$prop}")) {
-			call_user_func([$this, "add{$prop}"], $value);
-		} elseif (method_exists($this, "set{$prop}")) {
-			call_user_func([$this, "set{$prop}"], $value);
-		} elseif (method_exists($this, "set{$prop}s")) {
-			call_user_func([$this, "set{$prop}s"], $value);
-		} else {
-			throw new \Exception("Attempting to set invalid property: '{$prop}'");
-		}
-	}
-
-	final public function __isset(String $prop): Bool
-	{
-		return array_key_exists($this->{self::MAGIC_PROPERTY}[$prop]);
-	}
-
-	final public function __unset(String $prop)
-	{
-		unset($this->{self::MAGIC_PROPERTY}[$prop]);
-	}
-
-	final public function __debugInfo(): Array
-	{
-		return $this->{self::MAGIC_PROPERTY};
-	}
-
-	public function jsonSerialize(): Array
-	{
-		return $this->getArrayCopy();
-	}
-
-	final public function getSchemaURL(): String
-	{
-		return $this::SCHEMA . '/' . $this::ITEMTYPE;
-	}
-
-	public function getArrayCopy()
-	{
-		$data = [
-			'@context' => $this::SCHEMA,
-			'@type'    => $this::ITEMTYPE
-		];
-
-		foreach ($this->{self::MAGIC_PROPERTY} as $prop => $value) {
-			if ($value instanceof self) {
-				$data[$prop] = $value->getArrayCopy();
-			} elseif(is_array($value)) {
-				$data[$prop] = [];
-				foreach ($value as $item) {
-					$data[$prop][] = $item instanceof self
-						? $item->getArrayCopy()
-						: $item;
-				}
-			} else {
-				$data[$prop] = $value;
-			}
-		}
-		return $data;
-	}
+	// public function jsonSerialize(): Array
+	// {
+	// 	return $this->getArrayCopy();
+	// }
+	//
+	// final public function getSchemaURL(): String
+	// {
+	// 	return $this::SCHEMA . '/' . $this::ITEMTYPE;
+	// }
+	//
+	// public function getArrayCopy()
+	// {
+	// 	$data = [
+	// 		'@context' => $this::SCHEMA,
+	// 		'@type'    => $this::ITEMTYPE
+	// 	];
+	//
+	// 	foreach ($this->{self::MAGIC_PROPERTY} as $prop => $value) {
+	// 		if ($value instanceof self) {
+	// 			$data[$prop] = $value->getArrayCopy();
+	// 		} elseif(is_array($value)) {
+	// 			$data[$prop] = [];
+	// 			foreach ($value as $item) {
+	// 				$data[$prop][] = $item instanceof self
+	// 					? $item->getArrayCopy()
+	// 					: $item;
+	// 			}
+	// 		} else {
+	// 			$data[$prop] = $value;
+	// 		}
+	// 	}
+	// 	return $data;
+	// }
 
 	final public function setDOMData(\DOMElement $el, $item = 0, $xpath = null): \DOMElement
 	{
@@ -131,24 +127,24 @@ abstract class Item implements \JsonSerializable
 		return $el;
 	}
 
-	final protected function _set(String $prop, $value): \shgysk8zer0\Schema\Thing
-	{
-		$this->_data[$prop] = $value;
-		return $this;
-	}
+	// final protected function _set(String $prop, $value): \shgysk8zer0\Schema\Thing
+	// {
+	// 	$this->_data[$prop] = $value;
+	// 	return $this;
+	// }
 
-	final protected function _add(String $prop, $value): \shgysk8zer0\Schema\Thing
-	{
-		if (! array_key_exists($prop, $this->_data)) {
-			$this->_data[$prop] = [$value];
-		} elseif (! is_array($this->_data[$prop])) {
-			$this->_data[$prop] = [$this->_data[$prop]];
-			$this->_data[$prop][] = $value;
-		} else {
-			$this->_data[$prop][] = $value;
-		}
-		return $this;
-	}
+	// final protected function _add(String $prop, $value): \shgysk8zer0\Schema\Thing
+	// {
+	// 	if (! array_key_exists($prop, $this->_data)) {
+	// 		$this->_data[$prop] = [$value];
+	// 	} elseif (! is_array($this->_data[$prop])) {
+	// 		$this->_data[$prop] = [$this->_data[$prop]];
+	// 		$this->_data[$prop][] = $value;
+	// 	} else {
+	// 		$this->_data[$prop][] = $value;
+	// 	}
+	// 	return $this;
+	// }
 
 	final protected function _addAll(String $prop, Array $values)
 	{

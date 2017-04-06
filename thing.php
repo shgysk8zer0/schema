@@ -4,7 +4,23 @@ namespace shgysk8zer0\Schema;
 
 class Thing extends Abstracts\Item
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Thing';
+
+	const PROPS = [
+		'name',
+		'sameAs',
+		'url',
+		'alternateName',
+		'description',
+		'disambiguatingDescription',
+		'additionalType',
+		'image',
+		'potentialAction',
+		'identifier',
+		'mainEntityOfPage',
+	];
 
 	final public function setName(String $name): self
 	{

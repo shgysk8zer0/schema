@@ -4,6 +4,7 @@ namespace shgysk8zer0\Schema;
 
 class Place extends Thing
 {
+	use Traits\Data;
 	use Traits\ContactInfo;
 
 	const ITEMTYPE = 'Place';

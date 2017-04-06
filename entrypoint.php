@@ -8,6 +8,10 @@ namespace shgysk8zer0\Schema;
  */
 class EntryPoint extends Intangible
 {
+	use Traits\Data;
+
+	const ITEMTYPE = 'Intangible';
+
 	final public function setActionApplication(SoftwareApplication $app): self
 	{
 		return $this->_set('actionApplication', $app);

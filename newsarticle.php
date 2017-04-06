@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class NewsArticle extends Article
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'NewsArticle';
 
 	final public function setDateline(String $loc): self

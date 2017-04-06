@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Rating extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Rating';
 
 	final public function setAuthor(Thing $author): self

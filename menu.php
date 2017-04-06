@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class Menu extends CreativeWork
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Menu';
 
 	final public function setHasMenuItems(MenuItem ...$items): self

@@ -4,6 +4,7 @@ namespace shgysk8zer0\Schema;
 
 class OpeningHoursSpecification extends Thing
 {
+	use Traits\Data;
 	const ITEMTYPE = 'OpeningHoursSpecification';
 
 	public function setCloses(String $time): self

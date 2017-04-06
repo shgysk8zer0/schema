@@ -4,9 +4,12 @@ namespace shgysk8zer0\Schema;
 
 class Person extends Thing
 {
+	use Traits\Data;
 	use Traits\ContactInfo;
 
 	const ITEMTYPE = 'Person';
+
+	const PROPS = [];
 
 	final public function setFullName(String $first, String $middle, String $last): self
 	{

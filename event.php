@@ -3,6 +3,8 @@ namespace shgysk8zer0\Schema;
 
 class Event extends Thing
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'Event';
 
 	final public function setAbout(Thing $about):self

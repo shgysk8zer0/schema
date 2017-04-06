@@ -4,6 +4,8 @@ namespace shgysk8zer0\Schema;
 
 class MenuItem extends Intangible
 {
+	use Traits\Data;
+
 	const ITEMTYPE = 'MenuItem';
 
 	final public function setNutrition(NutritionInformation $nutrition): self

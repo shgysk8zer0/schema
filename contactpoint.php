@@ -4,9 +4,11 @@ namespace shgysk8zer0\Schema;
 
 class ContactPoint extends Thing
 {
+	use Traits\Data;
+	use Traits\ContactInfo;
+
 	const ITEMTYPE = 'ContactPoint';
 
-	use Traits\ContactInfo;
 
 	final public function setContactType(String $type): self
 	{
