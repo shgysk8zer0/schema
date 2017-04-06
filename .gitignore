@@ -1,8 +1,7 @@
 /patches/
 *.patch
-/node_modules/
-/npm-debug.log
-*js.map
+*.sql
+!/schema.sql
 
 #################
 ## Eclipse
