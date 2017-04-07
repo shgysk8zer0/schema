@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `ContactPoint`;
 CREATE TABLE `ContactPoint` (
   `id` int(10) unsigned NOT NULL,
   `contactType` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `contactOption` int(10) unsigned NOT NULL,
+  `contactOption` int(10) unsigned DEFAULT NULL,
   `language` int(10) unsigned DEFAULT NULL,
   `hoursAvailable` int(10) unsigned DEFAULT NULL,
   `address` int(10) unsigned DEFAULT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE `MediaObject` (
   `width` smallint(5) unsigned DEFAULT NULL,
   `height` smallint(5) unsigned DEFAULT NULL,
   `encodingFormat` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `contentSize` decimal(10,0) DEFAULT NULL,
+  `contentSize` decimal(10,2) DEFAULT NULL,
   `contentUrl` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `requiresSubscription` tinyint(1) DEFAULT '0',
   `uploadDate` datetime DEFAULT NULL,
@@ -222,12 +222,12 @@ DROP TABLE IF EXISTS `PostalAddress`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PostalAddress` (
   `id` int(10) unsigned NOT NULL,
-  `streetAddress` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `streetAddress` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postOfficeBoxNumber` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `addressLocality` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `addressCountry` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  `addressRegion` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `postalCode` int(5) unsigned NOT NULL,
+  `addressLocality` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addressCountry` varchar(35) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `addressRegion` varchar(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postalCode` int(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -263,7 +263,7 @@ CREATE TABLE `Thing` (
   `mainEntityOfPage` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifier` (`identifier`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 17:20:27
+-- Dump completed on 2017-04-06 17:47:06
