@@ -4,10 +4,19 @@ namespace shgysk8zer0\Schema\Traits;
 
 trait Data
 {
+	use SQL;
+
 	protected $_data = [];
 
 	protected function _set(String $prop, $value): \shgysk8zer0\Schema\Thing
 	{
+		if ($value instanceof Thing and ! $value->isValid()) {
+			throw new \RuntimeException(sprintf(
+				'%s does not have all required properties set and is not valid',
+				get_class($value)
+			));
+		}
+
 		if (! array_key_exists(self::ITEMTYPE, $this->_data)) {
 			$this->_data[self::ITEMTYPE] = [];
 		}
@@ -37,9 +46,23 @@ trait Data
 		return $this;
 	}
 
+	protected function _addAll(String $prop, Array $values)
+	{
+		foreach ($values as $value) {
+			$this->_add($prop, $value);
+		}
+		return $this;
+	}
+
 	public function __get(String $prop)
 	{
-		return $this->_data[self::ITEMTYPE][$prop] ?? parent::__get($prop);
+		if (array_key_exists($prop, $this->_data[self::ITEMTYPE] ?? [])) {
+			return $this->_data[self::ITEMTYPE][$prop];
+		} elseif (get_parent_class(__CLASS__)) {
+			return parent::__get($prop);
+		} else {
+			return null;
+		}
 	}
 
 	public function __set(String $prop, $value)
@@ -56,19 +79,11 @@ trait Data
 		}
 	}
 
-	protected function _addAll(String $prop, Array $values)
-	{
-		foreach ($values as $value) {
-			$this->_add($prop, $value);
-		}
-		return $this;
-	}
-
 	public function __isset(String $prop): Bool
 	{
-		if (array_key_exists($prop, $this->_data[self::ITEMTYPE])) {
+		if (array_key_exists($prop, $this->_data[self::ITEMTYPE] ?? [])) {
 			return true;
-		} elseif (! empty(class_parents(__CLASS__))) {
+		} elseif (get_parent_class(__CLASS__)) {
 			return parent::__isset($prop);
 		} else {
 			return false;
@@ -78,6 +93,9 @@ trait Data
 	public function __unset(String $prop)
 	{
 		unset($this->_data[self::ITEMTYPE][$prop]);
+		if (get_parent_class(__CLASS__)) {
+			parent::__unset($prop);
+		}
 	}
 
 	public function __debugInfo(): Array
@@ -120,5 +138,23 @@ trait Data
 		}
 
 		return $data;
+	}
+
+	public function isValid(): Bool
+	{
+		$valid = true;
+
+		if (defined(__CLASS__ . '::REQUIRED') and is_array(self::REQUIRED)) {
+			foreach (self::REQUIRED as $prop) {
+				if (! array_key_exists($prop, $this->_data[self::ITEMTYPE])) {
+					$valid = false;
+					break;
+				}
+			}
+		}
+
+
+
+		return $valid;
 	}
 }
