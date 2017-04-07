@@ -146,13 +146,13 @@ LOCK TABLES `MediaObject` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Organizaion`
+-- Table structure for table `Organization`
 --
 
-DROP TABLE IF EXISTS `Organizaion`;
+DROP TABLE IF EXISTS `Organization`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Organizaion` (
+CREATE TABLE `Organization` (
   `id` int(10) unsigned NOT NULL,
   `contactPoint` int(10) unsigned DEFAULT NULL,
   `employees` int(11) DEFAULT NULL,
@@ -168,12 +168,12 @@ CREATE TABLE `Organizaion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Organizaion`
+-- Dumping data for table `Organization`
 --
 
-LOCK TABLES `Organizaion` WRITE;
-/*!40000 ALTER TABLE `Organizaion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Organizaion` ENABLE KEYS */;
+LOCK TABLES `Organization` WRITE;
+/*!40000 ALTER TABLE `Organization` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `Thing` (
   `mainEntityOfPage` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifier` (`identifier`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 17:47:06
+-- Dump completed on 2017-04-06 17:59:02
