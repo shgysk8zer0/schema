@@ -7,4 +7,6 @@ class ContactPointOption extends Enumeration
 	use Traits\Data;
 
 	const ITEMTYPE = 'ContactPointOption';
+
+	const ITEMPROPS = [];
 }
