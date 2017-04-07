@@ -90,6 +90,33 @@ LOCK TABLES `CreativeWork` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `GeoCoordinates`
+--
+
+DROP TABLE IF EXISTS `GeoCoordinates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `GeoCoordinates` (
+  `id` int(10) unsigned NOT NULL,
+  `address` int(10) unsigned DEFAULT NULL,
+  `elevation` decimal(9,3) DEFAULT NULL,
+  `longitude` decimal(12,9) DEFAULT NULL,
+  `latitude` decimal(12,9) DEFAULT NULL,
+  `postalCode` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `GeoCoordinates`
+--
+
+LOCK TABLES `GeoCoordinates` WRITE;
+/*!40000 ALTER TABLE `GeoCoordinates` DISABLE KEYS */;
+/*!40000 ALTER TABLE `GeoCoordinates` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ImageObject`
 --
 
@@ -160,6 +187,7 @@ CREATE TABLE `Organization` (
   `legalName` int(11) DEFAULT NULL,
   `logo` int(10) unsigned DEFAULT NULL,
   `address` int(10) unsigned DEFAULT NULL,
+  `location` int(10) unsigned NOT NULL,
   `email` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   `faxNumber` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -195,6 +223,8 @@ CREATE TABLE `Person` (
   `children` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `parent` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contactPoint` int(255) DEFAULT NULL,
+  `homeLocation` int(10) unsigned NOT NULL,
+  `workLocation` int(10) unsigned NOT NULL,
   `address` int(10) unsigned DEFAULT NULL,
   `email` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -211,6 +241,37 @@ CREATE TABLE `Person` (
 LOCK TABLES `Person` WRITE;
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Place`
+--
+
+DROP TABLE IF EXISTS `Place`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Place` (
+  `id` int(10) unsigned NOT NULL,
+  `aggregateRating` int(10) unsigned DEFAULT NULL,
+  `containedInPlace` int(10) unsigned DEFAULT NULL,
+  `containsPlace` int(10) unsigned DEFAULT NULL,
+  `geo` int(10) unsigned DEFAULT NULL,
+  `photo` int(10) unsigned DEFAULT NULL,
+  `address` int(10) unsigned DEFAULT NULL,
+  `email` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `faxNumber` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Place`
+--
+
+LOCK TABLES `Place` WRITE;
+/*!40000 ALTER TABLE `Place` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Place` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -263,7 +324,7 @@ CREATE TABLE `Thing` (
   `mainEntityOfPage` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifier` (`identifier`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,4 +345,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 17:59:02
+-- Dump completed on 2017-04-07  7:21:30
