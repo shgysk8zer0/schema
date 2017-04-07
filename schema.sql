@@ -24,17 +24,26 @@ DROP TABLE IF EXISTS `ContactPoint`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ContactPoint` (
   `id` int(10) unsigned NOT NULL,
-  `contactType` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `contactType` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contactOption` int(10) unsigned NOT NULL,
-  `language` int(10) unsigned NOT NULL,
-  `hoursAvailable` int(10) unsigned NOT NULL,
-  `address` int(10) unsigned NOT NULL,
-  `email` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `telephone` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `faxNumber` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `language` int(10) unsigned DEFAULT NULL,
+  `hoursAvailable` int(10) unsigned DEFAULT NULL,
+  `address` int(10) unsigned DEFAULT NULL,
+  `email` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `faxNumber` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ContactPoint`
+--
+
+LOCK TABLES `ContactPoint` WRITE;
+/*!40000 ALTER TABLE `ContactPoint` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ContactPoint` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `CreativeWork`
@@ -55,8 +64,8 @@ CREATE TABLE `CreativeWork` (
   `copyrightYear` smallint(5) unsigned DEFAULT NULL,
   `editor` int(10) unsigned DEFAULT NULL,
   `genre` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `headline` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `isFamilyFriendly` tinyint(1) NOT NULL DEFAULT '1',
+  `headline` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `isFamilyFriendly` tinyint(1) DEFAULT '1',
   `keywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offers` int(11) DEFAULT NULL,
   `producer` int(10) unsigned DEFAULT NULL,
@@ -64,12 +73,21 @@ CREATE TABLE `CreativeWork` (
   `review` int(10) unsigned DEFAULT NULL,
   `sourceOrganization` int(10) unsigned DEFAULT NULL,
   `sponsor` int(10) unsigned DEFAULT NULL,
-  `text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `text` longtext COLLATE utf8_unicode_ci,
   `video` int(10) unsigned DEFAULT NULL,
   `workExample` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CreativeWork`
+--
+
+LOCK TABLES `CreativeWork` WRITE;
+/*!40000 ALTER TABLE `CreativeWork` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CreativeWork` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ImageObject`
@@ -80,11 +98,20 @@ DROP TABLE IF EXISTS `ImageObject`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ImageObject` (
   `id` int(10) unsigned NOT NULL,
-  `caption` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `thumbnail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `caption` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thumbnail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ImageObject`
+--
+
+LOCK TABLES `ImageObject` WRITE;
+/*!40000 ALTER TABLE `ImageObject` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ImageObject` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `MediaObject`
@@ -96,11 +123,11 @@ DROP TABLE IF EXISTS `MediaObject`;
 CREATE TABLE `MediaObject` (
   `id` int(10) unsigned NOT NULL,
   `associatedArticle` int(10) unsigned DEFAULT NULL,
-  `width` smallint(5) unsigned NOT NULL,
-  `height` smallint(5) unsigned NOT NULL,
+  `width` smallint(5) unsigned DEFAULT NULL,
+  `height` smallint(5) unsigned DEFAULT NULL,
   `encodingFormat` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contentSize` decimal(10,0) DEFAULT NULL,
-  `contentUrl` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `contentUrl` varchar(120) COLLATE utf8_unicode_ci DEFAULT NULL,
   `requiresSubscription` tinyint(1) DEFAULT '0',
   `uploadDate` datetime DEFAULT NULL,
   `expires` datetime DEFAULT NULL,
@@ -108,6 +135,15 @@ CREATE TABLE `MediaObject` (
   UNIQUE KEY `URL` (`contentUrl`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MediaObject`
+--
+
+LOCK TABLES `MediaObject` WRITE;
+/*!40000 ALTER TABLE `MediaObject` DISABLE KEYS */;
+/*!40000 ALTER TABLE `MediaObject` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Organizaion`
@@ -118,18 +154,27 @@ DROP TABLE IF EXISTS `Organizaion`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Organizaion` (
   `id` int(10) unsigned NOT NULL,
-  `contactPoint` int(10) unsigned NOT NULL,
-  `employees` int(11) NOT NULL,
-  `parentOrganization` int(10) unsigned NOT NULL,
-  `legalName` int(11) NOT NULL,
-  `logo` int(10) unsigned NOT NULL,
-  `address` int(10) unsigned NOT NULL,
-  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `telephone` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `faxNumber` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `contactPoint` int(10) unsigned DEFAULT NULL,
+  `employees` int(11) DEFAULT NULL,
+  `parentOrganization` int(10) unsigned DEFAULT NULL,
+  `legalName` int(11) DEFAULT NULL,
+  `logo` int(10) unsigned DEFAULT NULL,
+  `address` int(10) unsigned DEFAULT NULL,
+  `email` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `faxNumber` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Organizaion`
+--
+
+LOCK TABLES `Organizaion` WRITE;
+/*!40000 ALTER TABLE `Organizaion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Organizaion` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Person`
@@ -160,6 +205,15 @@ CREATE TABLE `Person` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `Person`
+--
+
+LOCK TABLES `Person` WRITE;
+/*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `PostalAddress`
 --
 
@@ -177,6 +231,15 @@ CREATE TABLE `PostalAddress` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PostalAddress`
+--
+
+LOCK TABLES `PostalAddress` WRITE;
+/*!40000 ALTER TABLE `PostalAddress` DISABLE KEYS */;
+/*!40000 ALTER TABLE `PostalAddress` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `Thing`
@@ -200,8 +263,17 @@ CREATE TABLE `Thing` (
   `mainEntityOfPage` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `identifier` (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Thing`
+--
+
+LOCK TABLES `Thing` WRITE;
+/*!40000 ALTER TABLE `Thing` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Thing` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -212,4 +284,4 @@ CREATE TABLE `Thing` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-06 15:52:44
+-- Dump completed on 2017-04-06 17:20:27
