@@ -25,6 +25,8 @@ class Thing implements \JsonSerializable
 		'mainEntityOfPage',
 	];
 
+	const REQUIRED = [];
+
 
 	final public function setName(String $name): self
 	{
