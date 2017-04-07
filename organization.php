@@ -19,6 +19,7 @@ class Organization extends Thing
 		'email',
 		'telephone',
 		'faxNumber',
+		'location',
 	];
 
 	final public function setContactPoints(ContactPoint ...$points): self
@@ -60,5 +61,17 @@ class Organization extends Thing
 	final public function setLogo(ImageObject $logo): self
 	{
 		return $this->_set('logo', $logo);
+	}
+
+	final public function setLocation(Thing $loc): self
+	{
+		if ($loc instanceof Place or $loc instanceof ContactPoint) {
+			return $this->_set('location', $loc);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'homeLocation must be an instanceof Place or ContactPoint. Instance of %s given',
+				get_class($loc)
+			));
+		}
 	}
 }

@@ -20,6 +20,7 @@ class Person extends Thing
 		'children',
 		'parent',
 		'contactPoint',
+		'homeLocation',
 		'address',
 		'email',
 		'telephone',
@@ -87,5 +88,17 @@ class Person extends Thing
 	final public function addContactPoint(ContactPoint $contact): self
 	{
 		return $this->_add('contactPoint', $contact);
+	}
+
+	final public function setHomeLocation(Thing $loc): self
+	{
+		if ($loc instanceof Place or $loc instanceof ContactPoint) {
+			return $this->_set('homeLocation', $loc);
+		} else {
+			throw new \InvalidArgumentException(sprintf(
+				'homeLocation must be an instanceof Place or ContactPoint. Instance of %s given',
+				get_class($loc)
+			));
+		}
 	}
 }
